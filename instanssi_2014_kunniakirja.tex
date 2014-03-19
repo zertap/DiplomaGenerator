@@ -1,0 +1,116 @@
+% Diploma creator template. Reads results.csv. 
+% Made for Instanssi demoparty.
+% 2014 Tuomo Sipola (tuomo.sipola@iki.fi)
+
+\documentclass[14pt,a4paper,onecolumn,oneside]{extarticle}
+
+% UTF-8 source code.
+\usepackage[T1]{fontenc}
+\usepackage{xltxtra}
+
+% Set language.
+\usepackage{polyglossia}
+\setdefaultlanguage{finnish}
+%\setotherlanguages{italian,latin,greek,hebrew}
+
+% Set font.
+\defaultfontfeatures{Mapping=tex-text, Numbers=Lining, Ligatures=Common}
+\setmainfont{Courier New}
+
+% Colors.
+\usepackage{xcolor}
+\definecolor{instanssired}{RGB}{164,30,11}
+\definecolor{instanssibrown}{RGB}{185,149,95}
+
+\newcommand{\redhilight}[1]{{\fontspec{Courier New}\bfseries{\textcolor{instanssired}{#1}}}}
+\newcommand{\brownhilight}[1]{{\fontspec{Courier New}\bfseries{\textcolor{instanssibrown}{#1}}}}
+
+% Page margins.
+\usepackage[margin=4cm]{geometry}
+
+% Background frame.
+\usepackage[center]{background}
+\SetBgAngle{0}
+\SetBgScale{1}
+\SetBgPosition{8cm,-12.3cm}
+\SetBgContents{\includegraphics{frame.pdf}}
+
+% To read CSV and do mail merging.
+\usepackage{csvtools}
+
+% Compare strings.
+\usepackage{xstring}
+
+%\usepackage[pdftex]{graphicx}
+
+\begin{document}
+\pagestyle{empty}
+\applyCSVfile{results.csv}{%
+
+\begin{center}
+
+\mbox{}
+\vspace{0.03\textheight}
+
+\huge\brownhilight{\insertAuthor} \\
+
+\vspace{0.6em}
+
+\IfStrEq{true}{\insertHasEntry}{%
+\small
+\IfStrEq{true}{\insertHasMultipleAuthors}{ovat}{on}
+{teoksella} \\
+
+\vspace{0.4em}
+
+\huge
+\redhilight{\insertEntry} \\
+}{}
+
+\vspace{0.6em}
+
+\small
+\IfStrEq{true}{\insertHasMultipleAuthors}{sijoittuneet}{sijoittunut} \\
+
+\vspace{1.5em}
+
+\huge
+{\bfseries\insertPlacement} \\
+
+\vspace{1em}
+
+\small
+{sijalle Instanssi 2014 -tapahtuman kilpasarjassa} \\
+
+\vspace{1em}
+
+\large
+{\bfseries\insertCompo} \\
+
+\vspace{1em}
+
+\small
+{ja täten}
+\IfStrEq{true}{\insertHasMultipleAuthors}{osoittaneet}{osoittanut} 
+{\rule{3cm}{1em}\hspace{-3cm} osaamista sekä taitoa digitaalisen tekemisen saralla.} \\
+
+\vspace{1em}
+
+\vfill
+
+\textcolor{instanssired}{Linkki Jyväskylä ry:n ja Instanssin puolesta} \\
+
+\end{center}
+
+\bigskip
+
+\small
+\noindent \rule{6cm}{1pt} \hfill \rule{6cm}{1pt} \\
+\noindent Jarkko Vilhunen \hfill Joel Lehtonen \\
+\noindent \textcolor{instanssibrown}{(työryhmän puheenjohtaja)} \hfill \textcolor{instanssibrown}{(kompovastaava)} \\
+
+\newpage
+
+}
+\end{document}
+

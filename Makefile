@@ -1,8 +1,8 @@
 # Make script for diploma creation.
 # Made for Instanssi demoparty.
-# 2013 Tuomo Sipola (tuomo.sipola@iki.fi)
+# 2014 Tuomo Sipola (tuomo.sipola@iki.fi)
 
-NAME=instanssi_2013_kunniakirja
+NAME=instanssi_2014_kunniakirja
 
 all: pdf clean
 
