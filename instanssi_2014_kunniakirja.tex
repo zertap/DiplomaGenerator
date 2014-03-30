@@ -25,6 +25,9 @@
 \newcommand{\redhilight}[1]{{\fontspec{Courier New}\bfseries{\textcolor{instanssired}{#1}}}}
 \newcommand{\brownhilight}[1]{{\fontspec{Courier New}\bfseries{\textcolor{instanssibrown}{#1}}}}
 
+% If someone uses character & in their name.
+\newcommand{\et}{\&}
+
 % Page margins.
 \usepackage[margin=4cm]{geometry}
 
@@ -70,7 +73,11 @@
 \vspace{0.6em}
 
 \small
+\IfStrEq{true}{\insertHasEntry}{
 \IfStrEq{true}{\insertHasMultipleAuthors}{sijoittuneet}{sijoittunut} \\
+}{
+\IfStrEq{true}{\insertHasMultipleAuthors}{ovat sijoittuneet}{on sijoittunut} \\
+}
 
 \vspace{1.5em}
 
