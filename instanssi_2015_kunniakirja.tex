@@ -15,15 +15,15 @@
 
 % Set font.
 \defaultfontfeatures{Mapping=tex-text, Numbers=Lining, Ligatures=Common}
-\setmainfont{Courier New}
+\setmainfont{Exo Bold}
 
 % Colors.
 \usepackage{xcolor}
-\definecolor{instanssired}{RGB}{164,30,11}
-\definecolor{instanssibrown}{RGB}{185,149,95}
+\definecolor{instanssiblue}{RGB}{31,90,190}
+\definecolor{instanssigrey}{RGB}{120,120,120}
 
-\newcommand{\redhilight}[1]{{\fontspec{Courier New}\bfseries{\textcolor{instanssired}{#1}}}}
-\newcommand{\brownhilight}[1]{{\fontspec{Courier New}\bfseries{\textcolor{instanssibrown}{#1}}}}
+\newcommand{\bluehilight}[1]{{\fontspec{Exo}\bfseries{\textcolor{instanssiblue}{#1}}}}
+\newcommand{\greyhilight}[1]{{\fontspec{Exo}\bfseries{\textcolor{instanssigrey}{#1}}}}
 
 % If someone uses character & in their name.
 \newcommand{\et}{\&}
@@ -55,7 +55,7 @@
 \mbox{}
 \vspace{0.1\textheight}
 
-\huge\brownhilight{\insertAuthor} \\
+\huge\bluehilight{\insertAuthor} \\
 
 \vspace{0.6em}
 
@@ -67,7 +67,7 @@
 \vspace{0.4em}
 
 \huge
-\redhilight{\insertEntry} \\
+\greyhilight{\insertEntry} \\
 }{}
 
 \vspace{0.6em}
@@ -98,13 +98,13 @@
 
 \small
 {ja täten}
-\IfStrEq{true}{\insertHasMultipleAuthors}{osoittaneet}{osoittanut} 
-{\rule{2.5cm}{1em}\hspace{-2.5cm} osaamista sekä \rule{1.5cm}{1em}\hspace{-1.5cm}taitoa digitaalisen tekemisen saralla.} \\
+\IfStrEq{true}{\insertHasMultipleAuthors}{osoittaneet}{osoittanut}{ 
+poikkeuksellista osaamista sekä erinomaista taitoa digitaalisen tekemisen saralla.} \\
 
 \vfill
 
 \footnotesize
-\textcolor{instanssired}{Linkki Jyväskylä ry:n ja Instanssin virallisesti valtuuttamina} \\
+\textcolor{instanssiblue}{Linkki Jyväskylä ry:n ja Instanssin puolesta} \\
 
 \end{center}
 
@@ -112,8 +112,8 @@
 
 \footnotesize
 \noindent \rule{6cm}{1pt} \hfill \rule{6cm}{1pt} \\
-\noindent Jarkko Vilhunen \hfill Joel Lehtonen \\
-\noindent \textcolor{instanssibrown}{(työryhmän puheenjohtaja)} \hfill \textcolor{instanssibrown}{(kompovastaava)} \\
+\noindent Satu Eskelinen \hfill Jouni Potila \\
+\noindent \textcolor{instanssigrey}{(pääjärjestäjä)} \hfill \textcolor{instanssigrey}{(pääjärjestäjä)} \\
 
 \newpage
 
