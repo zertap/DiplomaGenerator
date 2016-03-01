@@ -1,0 +1,122 @@
+% Diploma creator template. Reads results.csv. 
+% Made for Instanssi demoparty.
+% 2015 Tuomo Sipola (tuomo.sipola@iki.fi)
+
+\documentclass[14pt,a4paper,onecolumn,oneside]{extarticle}
+
+% UTF-8 source code.
+\usepackage[T1]{fontenc}
+\usepackage{xltxtra}
+
+% Set language.
+\usepackage{polyglossia}
+\setdefaultlanguage{finnish}
+%\setotherlanguages{italian,latin,greek,hebrew}
+
+% Set font.
+\defaultfontfeatures{Mapping=tex-text, Numbers=Lining, Ligatures=Common}
+\setmainfont{Exo Bold}
+
+% Colors.
+\usepackage{xcolor}
+\definecolor{instanssiblue}{RGB}{33,60,87}
+\definecolor{instanssigrey}{RGB}{120,120,120}
+
+\newcommand{\bluehilight}[1]{{\fontspec{Exo}\bfseries{\textcolor{instanssiblue}{#1}}}}
+\newcommand{\greyhilight}[1]{{\fontspec{Exo}\bfseries{\textcolor{instanssigrey}{#1}}}}
+
+% If someone uses character & in their name.
+\newcommand{\et}{\&}
+
+% Page margins.
+\usepackage[margin=4cm]{geometry}
+
+% Background frame.
+\usepackage[center]{background}
+\SetBgAngle{0}
+\SetBgScale{1}
+\SetBgPosition{8cm,-12.3cm}
+\SetBgContents{\includegraphics{frame.pdf}}
+
+% To read CSV and do mail merging.
+\usepackage{csvtools}
+
+% Compare strings.
+\usepackage{xstring}
+
+\usepackage{graphicx}
+
+\begin{document}
+\pagestyle{empty}
+\applyCSVfile{results.csv}{%
+
+\begin{center}
+
+\mbox{}
+\vspace{0.1\textheight}
+
+\huge\bluehilight{\insertAuthor} \\
+
+\vspace{0.6em}
+
+\IfStrEq{true}{\insertHasEntry}{%
+\small
+\IfStrEq{true}{\insertHasMultipleAuthors}{ovat}{on}
+{teoksellaan} \\
+
+\vspace{0.4em}
+
+\huge
+\bluehilight{\insertEntry} \\
+}{}
+
+\vspace{0.6em}
+
+\small
+\IfStrEq{true}{\insertHasEntry}{
+\IfStrEq{true}{\insertHasMultipleAuthors}{sijoittuneet}{sijoittunut} \\
+}{
+\IfStrEq{true}{\insertHasMultipleAuthors}{ovat sijoittuneet}{on sijoittunut} \\
+}
+
+\vspace{1.5em}
+
+\huge
+{\bfseries\insertPlacement} \\
+
+\vspace{1em}
+
+\small
+{sijalle Instanssi 2016 -tapahtuman kilpasarjassa} \\
+
+\vspace{1em}
+
+\large
+{\bfseries\insertCompo} \\
+
+\vspace{1em}
+
+\small
+{ja täten}
+\IfStrEq{true}{\insertHasMultipleAuthors}{osoittaneet}{osoittanut}{ 
+poikkeuksellista osaamista sekä erinomaista taitoa digitaalisen tekemisen saralla.} \\
+
+\vfill
+
+\footnotesize
+\textcolor{instanssiblue}{Linkki Jyväskylä ry:n ja Instanssin puolesta} \\
+
+\end{center}
+
+\bigskip
+
+\footnotesize
+\noindent \rule{6cm}{1pt} \hfill \rule{6cm}{1pt} \\
+\noindent Mikko Mäntylä \hfill Tomi	Lundberg \\
+\noindent \textcolor{instanssigrey}{(kompovastaava)} \hfill \textcolor{instanssigrey}{(pääjärjestäjä)} \\
+
+\newpage
+
+}
+\end{document}
+
