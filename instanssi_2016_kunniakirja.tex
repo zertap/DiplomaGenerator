@@ -39,7 +39,7 @@
 \SetBgContents{\includegraphics{frame.pdf}}
 
 % To read CSV and do mail merging.
-\usepackage{csvtools}
+\usepackage{datatool}
 
 % Compare strings.
 \usepackage{xstring}
@@ -48,7 +48,9 @@
 
 \begin{document}
 \pagestyle{empty}
-\applyCSVfile{results.csv}{%
+\DTLloaddb{results}{results.csv}
+\DTLforeach{results}{%
+\insertAuthor=Author,\insertHasEntry=HasEntry,\insertHasMultipleAuthors=HasMultipleAuthors,\insertEntry=Entry,\insertPlacement=Placement,\insertCompo=Compo}{%
 
 \begin{center}
 
@@ -59,13 +61,10 @@
 
 \vspace{0.6em}
 
-\IfStrEq{true}{\insertHasEntry}{%
+\DTLifeq{true}{\insertHasEntry}{%
 \small
-\IfStrEq{true}{\insertHasMultipleAuthors}{ovat}{on}
-{teoksellaan} \\
-
+\DTLifeq{true}{\insertHasMultipleAuthors}{ovat}{on}{teoksellaan} \\
 \vspace{0.4em}
-
 \huge
 \bluehilight{\insertEntry} \\
 }{}
@@ -73,10 +72,10 @@
 \vspace{0.6em}
 
 \small
-\IfStrEq{true}{\insertHasEntry}{
-\IfStrEq{true}{\insertHasMultipleAuthors}{sijoittuneet}{sijoittunut} \\
+\DTLifeq{true}{\insertHasEntry}{
+\DTLifeq{true}{\insertHasMultipleAuthors}{sijoittuneet}{sijoittunut} \\
 }{
-\IfStrEq{true}{\insertHasMultipleAuthors}{ovat sijoittuneet}{on sijoittunut} \\
+\DTLifeq{true}{\insertHasMultipleAuthors}{ovat sijoittuneet}{on sijoittunut} \\
 }
 
 \vspace{1.5em}
@@ -98,7 +97,7 @@
 
 \small
 {ja täten}
-\IfStrEq{true}{\insertHasMultipleAuthors}{osoittaneet}{osoittanut}{ 
+\DTLifeq{true}{\insertHasMultipleAuthors}{osoittaneet}{osoittanut}{%
 poikkeuksellista osaamista sekä erinomaista taitoa digitaalisen tekemisen saralla.} \\
 
 \vfill
@@ -112,7 +111,7 @@ poikkeuksellista osaamista sekä erinomaista taitoa digitaalisen tekemisen saral
 
 \footnotesize
 \noindent \rule{6cm}{1pt} \hfill \rule{6cm}{1pt} \\
-\noindent Mikko Mäntylä \hfill Tomi	Lundberg \\
+\noindent Mikko Mäntylä \hfill Tomi Lundberg \\
 \noindent \textcolor{instanssigrey}{(kompovastaava)} \hfill \textcolor{instanssigrey}{(pääjärjestäjä)} \\
 
 \newpage
