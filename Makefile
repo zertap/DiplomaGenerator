@@ -2,7 +2,7 @@
 # Made for Instanssi demoparty.
 # 2015 Tuomo Sipola (tuomo.sipola@iki.fi)
 
-NAME=instanssi_2018_kunniakirja
+NAME=instanssi_2019_kunniakirja
 
 all: pdf clean
 
